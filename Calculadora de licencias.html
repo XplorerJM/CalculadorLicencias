@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de licencias</title>
+  <!-- materialize -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+</head>
+
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #main-container {
+    margin: 10px auto;
+    width: 50%;
+    /* ancho tabla */
+
+  }
+
+  table {
+    /* margin-left: -100px; */
+    text-align: center;
+    border-collapse: collapse;
+    color: darkgrey;
+    width: 100%;
+  }
+
+  #table2 {
+    padding-top: 40px;
+    width: 100%;
+  }
+
+  #encabezado2 {
+    border-bottom: solid 5px #F0C45A;
+    text-align: center;
+    width: 600px;
+    padding-top: 15px;
+  }
+
+  #titulotabla {
+    color: rgb(22, 22, 22);
+    font-size: larger;
+    font-weight: 500;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+
+  #tipografiaencabezados {
+    color: darkgrey;
+    font-size: medium;
+    font-weight: 700;
+    text-align: center;
+
+  }
+
+  #txtsumalic {
+    color: darkgrey;
+    font-size: medium;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  #txtsumacosto {
+    color: darkgrey;
+    font-size: medium;
+    font-weight: 700;
+    text-align: right;
+    padding-top: 25px;
+  }
+
+  #tipografiaprecios {
+    color: darkgrey;
+    font-size: medium;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  #opHuman,
+  #opNom,
+  #opProjects,
+  #opFinance,
+  #opServices,
+  #opDocuments,
+  #opMeasure,
+  #opTaxes,
+  #opXML,
+  #opVRegula,
+  #opCxC,
+  #opCxP,
+  #opCUxProcess,
+  #opCUxTimbre,
+  #opCMde,
+  #opTimbrado,
+  #opMLicencias,
+  #opCUCertificado,
+  #opCACFirma,
+  #opCAAlmacenamiento,
+  #opCUCFirma,
+  #opCUDAlmacenado {
+    padding: 5px; 
+    width: 80px;
+    height: 15px;
+    border: 2px solid #F0C45A;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .imgproducto {
+    height: 80px;
+    width: 70px;
+    align-content: center;
+    padding-top: 25px;
+  }
+
+
+
+  .button {
+    background-color: #F0C45A;
+    font-size: 14px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20%;
+    padding-right: 20%;
+    align-items: center;
+
+  }
+
+  .buttontablas {
+
+    font-size: 70%;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+    color: gray;
+
+    padding-top: .5%;
+    padding-bottom: .5%;
+    width: 17%;
+
+
+    align-items: center;
+    text-decoration: none;
+    box-shadow: none;
+    display: inline-block;
+  }
+
+  .button:hover,
+  .buttontablas {
+    background-color: #F0C45A;
+    color: gray;
+  }
+
+  
+
+  #boton {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+  }
+
+  .sumatotal {
+    width: 300px;
+    height: 100;
+    background: gray;
+    opacity: 0.8;
+    position: fixed;
+    left: 75%;
+    top: 15%;
+    border-radius: 8px;
+
+  }
+
+  .letrastotaltitulo {
+    color: aliceblue;
+    font-size: 90%;
+    font-weight: bold;
+    
+
+  }
+
+  .letrastotaltabla {
+    color: aliceblue;
+    font-size: 85%;
+
+  }
+
+  /* Estilos materialize */
+  .container {
+    height: 1200px;
+    width: 700px;
+
+  }
+
+  .carousel .carousel-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    user-select: none;
+    width: 650px;
+    height: 15000px;
+    object-fit: contain;
+    position: absolute;
+  }
+
+  p {
+    font-size: 10px;
+    text-align: justify;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .textosproducto {
+    font-size: 15px;
+    color: rgba(7, 70, 206, 0.671);
+    font-weight: 700;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+
+  .textosproductomasivo {
+    font-size: 15px;
+    color: rgba(19, 207, 231, 0.938);
+    font-weight: 700;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .td {
+    width: 220px;
+  }
+
+  .infoimg{
+    width: 15px;
+  }
+
+  .div-imagen {
+  display:inline-block;
+  position:relative;
+}
+
+.div-imagen > div {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  padding:10px;
+  margin:0;
+}
+
+.desvanecer:hover {
+  opacity: 0.07;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -ms-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+.full{
+  width: 100%;
+}
+
+</style>
+
+<body>
+
+  <!-- -------------------------------------------------------------------Inicia carrusel -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col s12">        
+        
+
+        <div class="carousel center-align">
+          <div class="carousel-item">
+
+            //insertar div de tabla 
+
+          </div>
+
+          <div class="carousel-item">
+
+            // insertar div de tabla 2 
+
+          </div>
+
+        </div>
+       
+         
+        
+
+      </div>
+    </div>
+
+  </div>	 -->
+
+  <!-- -------------------------------------------------------------------Termina carrusel -->
+
+
+  <!-- <div id="boton">
+    <a class="buttontablas" href="javascript:mostrarOcultarTablas('productividad-container')"
+      onclick="mostrarOcultarTablas(productividad-container)">Productividad</a>
+
+
+    <a class="buttontablas" href="javascript:mostrarOcultarTablas('ControlInterno-container')"
+      onclick="mostrarOcultarTablas(ControlInterno-container)">Control interno</a>
+
+    <a class="buttontablas" href="javascript:mostrarOcultarTablas('otros-container')"
+      onclick="mostrarOcultarTablas(otros-container)">Otros</a>
+  </div> -->
+  <div class="full">
+    <div id="main-container">
+          <div class="sumatotal" id="cuadro-suma-total">
+            <div id="divtablatotal">
+            <table>
+              <tr class="letrastotaltitulo">
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+              <tr class="letrastotaltabla">
+                <td>Productividad</td>
+                <td><span id="cantidadLicenciasProductividad"></span></td>
+                <td>$<span id="resulProductividad"> </span></td>
+              </tr>
+              <tr class="letrastotaltabla">
+                <td>Control interno</td>
+                <td><span id="cantidadLicenciasControl"></span></td>
+                <td>$<span id="resulControl"> </span></td>
+              </tr>
+              <tr class="letrastotaltabla">
+                <td>Otros</td>
+                <td><span id="cantidadLicenciasOtros"></span></td>
+                <td>$<span id="resulOtros"> </span></td>
+              </tr>
+              
+              <tr class="letrastotaltabla">
+                <td>Total</td>
+                <td><span id="TotalLicenciasGeneral"></span></td>
+                <td>$<span id="sumaTotal"> </span></td>
+              </tr>   
+
+            </table>
+
+          </div>
+          <div id="boton">
+            <div>     
+              <a class="button" onclick="mostrar();">Calcular</a>
+            </div>
+            <br/>
+              <div>
+                <a class="button" onclick="location.reload()">Limpiar</a>
+              </div>      
+            
+              
+
+            </div>
+            
+              <p class="letrastotaltabla" colspan="3">*Los precios no incluyen IVA</p>
+              
+            </tr>
+          </div>
+
+          
+          <div id="productividad-container">
+
+            <table class="pricing-table-list" id="ocultatabla" > <!-- style="display:none" -->
+              <caption id="titulotabla">Calculadora de licencias / Productividad</caption>
+              <thead id="tipografiaencabezados">
+
+
+                <tr>
+                  <th>Producto</th>
+
+                  <th>Cantidad de licencias</th>
+
+                  <th>Costo unitario</th>
+
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_5e9f41aa2f7c4dd182bb397240c45756~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opHuman" name="opHuman" min="0" placeholder="0" value="0">
+
+                  </td>
+                  <td id="tipografiaprecios"><span id="preciouh">$130  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulHuman"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infohuman();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_9acedb90ebb940c09fd584d8903e5758~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opNom" name="opNom" min="0" placeholder="0" value="0">
+
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioun">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulNom"></span>  MXN
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_26b84e3e40784f12ac4ca5fa3f8faa5d~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opProjects" name="opProjects" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioup">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulProjects"></span>  MXN</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_58cc6fdc965841d7a8d3dc28c61888f3~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opFinance" name="opFinance" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="preciouf">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulFinance"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infofinance();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td> <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_1ee004ad74454439855c9fa2027cb8be~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opServices" name="opServices" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precious">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulServices"></span>  MXN</td>
+                </tr>
+                <tr>
+                  <td> <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_aa1ebe71bebd421b998d7e3c1c2f9068~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opDocuments" name="opDocuments" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioud">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulDocuments"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infodocuments();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_31ccf84e32b54b889af87e38a61864ee~mv2.png" />
+                  </td>
+                  <td>
+                    <input type="number" id="opMeasure" name="opMeasure" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioum">$100  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulMeasure"></span>  MXN</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+            <table id="table2">
+              <thead id="encabezado2">
+                <br />
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td id="txtsumalic"><span id="totalLicencias"></span> Licencias</td>
+                  <td></td>
+                  <td id="txtsumacosto">$<span id="totalPrecio"></span>  MXN</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+          <br />
+          <br />
+          <div id="ControlInterno-container">
+            <table class="pricing-table-list">
+              <caption id="titulotabla">Calculadora de licencias / Control interno</caption>
+              <thead id="tipografiaencabezados">
+                <tr>
+                  <th>Producto</th>
+
+                  <th>Cantidad de licencias</th>
+
+                  <th>Costo unitario</th>
+
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_451c6e5cb79c4411a8c84b73ab5156dc~mv2.png"
+                      title="Taxes" />
+                  </td>
+
+                  <td colspan="3">
+                    <p>Para todos los módulos exceptuando ADMINISTRADOR XML, se debe considerar el costo adicional de
+                      almacenamiento en función de los
+                      CFDIS emitidos y recibidos identificando que cada 100 MB se pueden almacenar hasta 2,000 CFDIS. Para el
+                      módulo de ADMINISTRADOR
+                      XML se debe considerar almacenamiento si se van a importar los CFDIS para su análisis en los demás
+                      módulos del producto.
+                      Todos los productos son sin límite de RFC y funciona para cualquier sistema operativo en su versión web.
+                    </p>
+                  </td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infotaxescontrol();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_f26ca884700b466bb5312a0b0880a6dc~mv2.png"
+                      title="Taxes" />
+                  </td>
+                  <td>
+                    <input type="number" id="opTaxes" name="opTaxes" min="0" placeholder="0" value="0">
+
+
+
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioTaxes">$1650  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulTaxes"></span>  MXN </td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infotaxes();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_54830ac58d2c46e9a1c6cc9b7a07645e~mv2.png"
+                      title="Administrador XML" />
+                  </td>
+                  <td>
+                    <input type="number" id="opXML" name="opXML" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioXML">$120  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulXML"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infoxml();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_2847803e1f844b558c829691f45b144d~mv2.png"
+                      title="Valdación regulatoria" />
+                  </td>
+                  <td>
+                    <input type="number" id="opVRegula" name="opVRegula" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioVRegula">$250  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulVRegula"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infovregula();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td> <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_8023237497ed4dc4aed940d428ca69f3~mv2.png"
+                      title="Cuentas por cobrar" />
+                  </td>
+                  <td>
+                    <input type="number" id="opCxC" name="opCxC" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioCxC">$250  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulCxC"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infocxc();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td> <img class="imgproducto"
+                      src="https://static.wixstatic.com/media/dd8043_01fa604a92ba4590bb42a1bb5673671b~mv2.png"
+                      title="Cuentas por pagar" />
+                  </td>
+                  <td>
+                    <input type="number" id="opCxP" name="opCxP" min="0" placeholder="0" value="0">
+                  </td>
+                  <td id="tipografiaprecios"><span id="precioCxP">$250  MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulCxP"></span>  MXN</td>
+                  <td>
+                    <div class="div-imagen">                
+                      <a onclick="infocxp();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+            <table id="table2">
+              <thead id="encabezado2">
+                <br />
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td id="txtsumalic"><span id="totalLicenciasControlInterno"></span> Licencias</td>
+                  <td></td>
+                  <td id="txtsumacosto">$<span id="totalPrecioControlInterno"></span>  MXN</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+          <br /><br />
+          <div id="otros-container">
+
+            <table class="pricing-table-list">
+              <caption id="titulotabla">Calculadora de productos masivos / Otros <a class="div-imagen" onclick="infomasivo();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a></caption>
+                            
+                
+              
+              <thead id="tipografiaencabezados">
+                <tr>
+                  <th>Producto</th>
+
+                  <th>Cantidad</th>
+
+                  <th>Costo unitario</th>
+
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td class="td">    <p class="textosproducto">Costo por timbre</p>    </td>
+                  <td>     <input type="number" id="opCUxTimbre" name="opCUxTimbre" min="50" placeholder="0" value="0"> </td>
+                  <td id="tipografiaprecios"><span id="precioCUxTimbre">$2.50 MXN</span></td>
+                  <td id="tipografiaprecios">$<span id="resulCUxTimbre"></span> MXN</td>
+                </tr>
+                        
+              <tr>
+                <td>      <p class="textosproductomasivo">Costo certificado de firma</p>       </td>
+
+                <td>  <input type="number" id="opCUCertificado" name="opCUCertificado" min="10" placeholder="0" value="0">        </td>
+
+                <td id="tipografiaprecios"><span id="precioCUCertificado">$25  MXN</span></td>
+                <td id="tipografiaprecios">$<span id="resulCUCertificado"></span>  MXN</td>
+              </tr>            
+                
+        
+              <tr>
+                <td>     <p class="textosproductomasivo">Almacenamiento (100 Mb)</p>        </td>
+                <td>     <input type="number" id="opCAAlmacenamiento" name="opCAAlmacenamiento" min="0" placeholder="0" value="0">       </td>
+                <td id="tipografiaprecios"><span id="precioCAAlmacenamiento">$175  MXN</span></td>
+                <td id="tipografiaprecios">$<span id="resulCAAlmacenamiento"></span>  MXN</td>
+                <td>
+                  <div class="div-imagen">                
+                    <a onclick="infocertifirma();" > <img class="desvanecer" id="infohuman" src="https://static.wixstatic.com/media/75ece2_f40440e3c19749b990bb642e4fcd14ed~mv2.png" width="15px"></a>
+                  </div>
+                </td>
+              </tr>          
+          
+                
+
+              </tbody>
+            </table>
+
+            <table id="table2">
+              <thead id="encabezado2">
+                <br />
+                <tr></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td id="txtsumalic">Otros <span id="totalLicenciasOtros"></span> </td>
+                  <td></td>
+                  <td id="txtsumacosto">$<span id="totalPrecioOtros"></span>  MXN</td>
+                </tr>
+              </tbody>
+            </table>
+
+
+          </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script type="text/javascript">
+    // ------------------------------------------------------------                     Inicia script de carrusel
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     const elementCarousel = document.querySelectorAll('.carousel');
+    //     M.Carousel.init(elementCarousel,{
+    //       duration: 150
+    //     })
+    // }); 
+    // ------------------------------------------------------------                     Termina script de carrusel
+
+
+    //------------------------------------------------------------Inicia Funcion para ocultar las tablas
+    // function mostrarOcultarTablas(id){
+    //     mostrado=0;
+
+    //      tabla = document.getElementById(id)                         
+
+    //      if(tabla == 1){
+    //         document.getElementById('productividad-container').style.display = 'block';
+    //         document.getElementById('ControlInterno-container').style.display = 'none';
+    //         document.getElementById('otros-container').style.display = 'none'; }
+
+    //      else if(tabla == 'ControlInterno-container'){
+    //         document.getElementById('productividad-container').style.display = 'none';
+    //         document.getElementById('ControlInterno-container').style.display = 'block';
+    //         document.getElementById('otros-container').style.display = 'none';
+    //     }
+    //     else if(tabla == 'otros-container'){
+    //       document.getElementById('productividad-container').style.display = 'none';
+    //         document.getElementById('ControlInterno-container').style.display = 'none';
+    //         document.getElementById('otros-container').style.display = 'block';
+    //     }
+
+
+    //     }
+    //--------------------------------------------------------------funciones Productividad
+    // ------------------------------------------------------------Termina Funcion para ocultar las tablas
+
+    //------------------------------------------------------- inicia bloque de calculo para licencias de productividad
+
+    function calcular_licHuman(opHuman) {
+
+
+   if (opHuman == 0) {
+        costolicHuman = opHuman * 0
+        document.getElementById("preciouh").innerHTML = "$ 0 MXN";
+        return costolicHuman;
+      }
+
+      else if (opHuman >= 1 && opHuman <= 5) {
+        costolicHuman = opHuman * 130
+        document.getElementById("preciouh").innerHTML = "$130 MXN";
+        return costolicHuman;
+      }
+
+      else if (opHuman >= 6 && opHuman <= 10) {
+        costolicHuman = opHuman * 125
+        document.getElementById("preciouh").innerHTML = "$125 MXN";
+        return costolicHuman;
+      }
+
+      else if (opHuman >= 11 && opHuman <= 20) {
+        costolicHuman = opHuman * 120
+        document.getElementById("preciouh").innerHTML = "$120 MXN";
+        return costolicHuman;
+      }
+      else if (opHuman >= 21 && opHuman <= 40) {
+        costolicHuman = opHuman * 115
+        document.getElementById("preciouh").innerHTML = "$115 MXN";
+        return costolicHuman;
+      }
+      else if (opHuman >= 41 && opHuman <= 80) {
+        costolicHuman = opHuman * 110
+        document.getElementById("preciouh").innerHTML = "$110 MXN";
+        return costolicHuman;
+      }
+      else if (opHuman >= 81 && opHuman <= 150) {
+        costolicHuman = opHuman * 105
+        document.getElementById("preciouh").innerHTML = "$105 MXN";
+        return costolicHuman;
+      }
+      else if (opHuman >= 151 && opHuman <= 300) {
+        costolicHuman = opHuman * 100
+        document.getElementById("preciouh").innerHTML = "$100 MXN";
+        return costolicHuman;
+      }
+
+      else if (opHuman > 300) {
+        costolicHuman = opHuman * 90
+        document.getElementById("preciouh").innerHTML = "$90 MXN";
+
+        return costolicHuman;
+      }
+
+
+
+    }
+
+    function calcular_licNom(opNom) {
+      if (opNom == 0) {
+        costolicNom = opNom * 0
+        document.getElementById("precioun").innerHTML = "$0 MXN";
+      }
+
+      else if (opNom >= 1 && opNom <= 5) {
+        costolicNom = opNom * 100
+        document.getElementById("precioun").innerHTML = "$100 MXN";
+      }
+
+      else if (opNom >= 6 && opNom <= 10) {
+        costolicNom = opNom * 95
+        document.getElementById("precioun").innerHTML = "$95 MXN";
+      }
+
+      else if (opNom >= 11 && opNom <= 20) {
+        costolicNom = opNom * 90
+        document.getElementById("precioun").innerHTML = "$90 MXN";
+      }
+
+      else if (opNom >= 21 && opNom <= 40) {
+        costolicNom = opNom * 85
+        document.getElementById("precioun").innerHTML = "$85 MXN";
+      }
+
+      else if (opNom >= 41 && opNom <= 80) {
+        costolicNom = opNom * 80
+        document.getElementById("precioun").innerHTML = "$80 MXN";
+      }
+
+      else if (opNom >= 81 && opNom <= 150) {
+        costolicNom = opNom * 75
+        document.getElementById("precioun").innerHTML = "$75 MXN";
+      }
+
+      else if (opNom >= 151 && opNom <= 300) {
+        costolicNom = opNom * 70
+        document.getElementById("precioun").innerHTML = "$70 MXN";
+      }
+
+      else if (opNom > 300) {
+        costolicNom = opNom * 60
+        document.getElementById("precioun").innerHTML = "$60 MXN";
+      }
+      return costolicNom;
+    }
+
+    function calcular_licProjects(opProjects) {
+      if (opProjects == 0) {
+        costolicProjects = opProjects * 0
+        document.getElementById("precioup").innerHTML = "$0 MXN";
+      }
+
+      else if (opProjects >= 1 && opProjects <= 5) {
+        costolicProjects = opProjects * 100
+        document.getElementById("precioup").innerHTML = "$100 MXN";
+      }
+
+      else if (opProjects >= 6 && opProjects <= 10) {
+        costolicProjects = opProjects * 95
+        document.getElementById("precioup").innerHTML = "$95 MXN";
+      }
+
+      else if (opProjects >= 11 && opProjects <= 20) {
+        costolicProjects = opProjects * 90
+        document.getElementById("precioup").innerHTML = "$90 MXN";
+      }
+
+      else if (opProjects >= 21 && opProjects <= 40) {
+        costolicProjects = opProjects * 85
+        document.getElementById("precioup").innerHTML = "$85 MXN";
+      }
+
+      else if (opProjects >= 41 && opProjects <= 80) {
+        costolicProjects = opProjects * 80
+        document.getElementById("precioup").innerHTML = "$80 MXN";
+      }
+
+      else if (opProjects >= 81 && opProjects <= 150) {
+        costolicProjects = opProjects * 75
+        document.getElementById("precioup").innerHTML = "$75 MXN";
+      }
+
+      else if (opProjects >= 151 && opProjects <= 300) {
+        costolicProjects = opProjects * 70 
+        document.getElementById("precioup").innerHTML = "$70 MXN";
+      }
+      else if (opProjects > 300) {
+        costolicProjects = opProjects * 60 
+        document.getElementById("precioup").innerHTML = "$60 MXN";
+      }
+
+      return costolicProjects;
+    }
+
+    function calcular_licFinance(opFinance) {
+      if (opFinance == 0) {
+        costolicFinance = opFinance * 0
+        document.getElementById("preciouf").innerHTML = "$0 MXN";
+      }
+
+      else if (opFinance >= 1 && opFinance <= 5) {
+        costolicFinance = opFinance * 100
+        document.getElementById("preciouf").innerHTML = "$100 MXN";
+      }
+
+      else if (opFinance >= 6 && opFinance <= 10) {
+        costolicFinance = opFinance * 95
+        document.getElementById("preciouf").innerHTML = "$95 MXN";
+      }
+
+      else if (opFinance >= 11 && opFinance <= 20) {
+        costolicFinance = opFinance * 90
+        document.getElementById("preciouf").innerHTML = "$90 MXN";
+      }
+
+      else if (opFinance >= 21 && opFinance <= 40) {
+        costolicFinance = opFinance * 85
+        document.getElementById("preciouf").innerHTML = "$85 MXN";
+      }
+
+      else if (opFinance >= 41 && opFinance <= 80) {
+        costolicFinance = opFinance * 80
+        document.getElementById("preciouf").innerHTML = "$80 MXN";
+      }
+
+      else if (opFinance >= 81 && opFinance <= 150) {
+        costolicFinance = opFinance * 75
+        document.getElementById("preciouf").innerHTML = "$75 MXN";
+      }
+
+      else if (opFinance >= 151 && opFinance <= 300) {
+        costolicFinance = opFinance * 70
+        document.getElementById("preciouf").innerHTML = "$70 MXN";
+      }
+
+      else if (opFinance > 300) {
+        costolicFinance = opFinance * 60
+        document.getElementById("preciouf").innerHTML = "$60 MXN";
+      }
+
+      return costolicFinance;
+    }
+
+    function calcular_licServices(opServices) {
+      if (opServices == 0) {
+        costolicServices = opServices * 0
+        document.getElementById("precious").innerHTML = "$0 MXN";
+      }
+
+      else if (opServices >= 1 && opServices <= 5) {
+        costolicServices = opServices * 100
+        document.getElementById("precious").innerHTML = "$100 MXN";
+      }
+
+      else if (opServices >= 6 && opServices <= 10) {
+        costolicServices = opServices * 95
+        document.getElementById("precious").innerHTML = "$95 MXN";
+      }
+
+      else if (opServices >= 11 && opServices <= 20) {
+        costolicServices = opServices * 90
+        document.getElementById("precious").innerHTML = "$90 MXN";
+      }
+
+      else if (opServices >= 21 && opServices <= 40) {
+        costolicServices = opServices * 85
+        document.getElementById("precious").innerHTML = "$85 MXN";
+      }
+
+      else if (opServices >= 41 && opServices <= 80) {
+        costolicServices = opServices * 80
+        document.getElementById("precious").innerHTML = "$80 MXN";
+      }
+
+      else if (opServices >= 81 && opServices <= 150) {
+        costolicServices = opServices * 75
+        document.getElementById("precious").innerHTML = "$75 MXN";
+      }
+
+      else if (opServices >= 151 && opServices <= 300) {
+        costolicServices = opServices * 70
+        document.getElementById("precious").innerHTML = "$70 MXN";
+      }
+
+      else if (opServices > 300) {
+        costolicServices = opServices * 60
+        document.getElementById("precious").innerHTML = "$60 MXN";
+      }
+
+
+      return costolicServices;
+    }
+
+    function calcular_licDocuments(opDocuments) {
+      if (opDocuments == 0) {
+        costolicDocuments = opDocuments * 0
+        document.getElementById("precioud").innerHTML = "$0 MXN";
+      }
+      else if (opDocuments >= 1 && opDocuments <= 5) {
+        costolicDocuments = opDocuments * 100
+        document.getElementById("precioud").innerHTML = "$100 MXN";
+      }
+      else if (opDocuments >= 6 && opDocuments <= 10) {
+        costolicDocuments = opDocuments * 95
+        document.getElementById("precioud").innerHTML = "$95 MXN";
+      }
+      else if (opDocuments >= 11 && opDocuments <= 20) {
+        costolicDocuments = opDocuments * 90
+        document.getElementById("precioud").innerHTML = "$90 MXN";
+      }
+      else if (opDocuments >= 21 && opDocuments <= 40) {
+        costolicDocuments = opDocuments * 85
+        document.getElementById("precioud").innerHTML = "$85 MXN";
+      }
+      else if (opDocuments >= 41 && opDocuments <= 80) {
+        costolicDocuments = opDocuments * 80
+        document.getElementById("precioud").innerHTML = "$80 MXN";
+      }
+      else if (opDocuments >= 81 && opDocuments <= 150) {
+        costolicDocuments = opDocuments * 75
+        document.getElementById("precioud").innerHTML = "$75 MXN";
+      }
+      else if (opDocuments >= 151 && opDocuments <= 300) {
+        costolicDocuments = opDocuments * 70
+        document.getElementById("precioud").innerHTML = "$70 MXN";
+      }
+      else if (opDocuments > 300) {
+        costolicDocuments = opDocuments * 60
+        document.getElementById("precioud").innerHTML = "$60 MXN";
+      }
+
+      return costolicDocuments;
+    }
+
+    function calcular_licMeasure(opMeasure) {
+      if (opMeasure == 0) {
+        costolicMeasure = opMeasure * 0
+        document.getElementById("precioum").innerHTML = "$0 MXN";
+      }
+      else if (opMeasure >= 1 && opMeasure <= 5) {
+        costolicMeasure = opMeasure * 100
+        document.getElementById("precioum").innerHTML = "$100 MXN";
+      }
+      else if (opMeasure >= 6 && opMeasure <= 10) {
+        costolicMeasure = opMeasure * 95
+        document.getElementById("precioum").innerHTML = "$95 MXN";
+      }
+      else if (opMeasure >= 11 && opMeasure <= 20) {
+        costolicMeasure = opMeasure * 90
+        document.getElementById("precioum").innerHTML = "$90 MXN";
+      }
+      else if (opMeasure >= 21 && opMeasure <= 40) {
+        costolicMeasure = opMeasure * 85
+        document.getElementById("precioum").innerHTML = "$85 MXN";
+      }
+      else if (opMeasure >= 41 && opMeasure <= 80) {
+        costolicMeasure = opMeasure * 80
+        document.getElementById("precioum").innerHTML = "$80 MXN";
+      }
+      else if (opMeasure >= 81 && opMeasure <= 150) {
+        costolicMeasure = opMeasure * 75
+        document.getElementById("precioum").innerHTML = "$75 MXN";
+      }
+      else if (opMeasure >= 151 && opMeasure <= 300) {
+        costolicMeasure = opMeasure * 70
+        document.getElementById("precioum").innerHTML = "$70 MXN";
+      }
+      else if (opMeasure > 300) {
+        costolicMeasure = opMeasure * 60
+        document.getElementById("precioum").innerHTML = "$60 MXN";
+      }
+
+      return costolicMeasure;
+    }
+    //------------------------------------------------------- termina bloque de calculo para licencias de productividad 
+
+    //------------------------------------------------------- inicia bloque de calculo para licencias de control interno
+
+    function calcular_licTaxesControl(opTaxes) {
+
+
+      if (opTaxes == 0) {
+        costolicTaxesControl = opTaxes * 0
+        document.getElementById("precioTaxes").innerHTML = "$0 MXN";
+        return costolicTaxesControl;
+      }
+
+      else if (opTaxes >= 1 && opTaxes <= 5) {
+        costolicTaxesControl = opTaxes * 1650
+        document.getElementById("precioTaxes").innerHTML = "$1650 MXN";
+        return costolicTaxesControl;
+      }
+
+      else if (opTaxes >= 6 && opTaxes <= 10) {
+        costolicTaxesControl = opTaxes * 1645
+        document.getElementById("precioTaxes").innerHTML = "$1645 MXN";
+        return costolicTaxesControl;
+      }
+
+      else if (opTaxes >= 11 && opTaxes <= 20) {
+        costolicTaxesControl = opTaxes * 1640
+        document.getElementById("precioTaxes").innerHTML = "$1640 MXN";
+        return costolicTaxesControl;
+      }
+      else if (opTaxes >= 21 && opTaxes <= 40) {
+        costolicTaxesControl = opTaxes * 1635
+        document.getElementById("precioTaxes").innerHTML = "$1635 MXN";
+        return costolicTaxesControl;
+      }
+      else if (opTaxes >= 41 && opTaxes <= 80) {
+        costolicTaxesControl = opTaxes * 1630
+        document.getElementById("precioTaxes").innerHTML = "$1630 MXN";
+        return costolicTaxesControl;
+      }
+      else if (opTaxes >= 81 && opTaxes <= 150) {
+        costolicTaxesControl = opTaxes * 1625
+        document.getElementById("precioTaxes").innerHTML = "$1625 MXN";
+        return costolicTaxesControl;
+      }
+      else if (opTaxes >= 151 && opTaxes <= 300) {
+        costolicTaxesControl = opTaxes * 1620
+        document.getElementById("precioTaxes").innerHTML = "$1620 MXN";
+        return costolicTaxesControl;
+      }
+
+      else if (opTaxes > 300) {
+        costolicTaxesControl = opTaxes * 1615
+        document.getElementById("precioTaxes").innerHTML = "$1615 MXN";
+        return costolicTaxesControl;
+      }
+
+
+
+    }
+
+    function calcular_licXML(opXML) {
+      if (opXML == 0) {
+        licXML = opXML * 0
+        document.getElementById("precioXML").innerHTML = "$0 MXN";
+      }
+
+      else if (opXML >= 1 && opXML <= 10) {
+        licXML = opXML * 120
+        document.getElementById("precioXML").innerHTML = "$120 MXN";
+      }
+
+      else if (opXML >= 11 && opXML <= 40) {
+        licXML = opXML * 115
+        document.getElementById("precioXML").innerHTML = "$115 MXN";
+      }
+
+      else if (opXML >= 41 && opXML <= 150) {
+        licXML = opXML * 110
+        document.getElementById("precioXML").innerHTML = "$110 MXN";
+      }
+
+      else if (opXML >= 150) {
+        licXML = opXML * 100
+        document.getElementById("precioXML").innerHTML = "$100 MXN";
+      }
+
+      return licXML;
+    }
+
+    function calcular_licVRegula(opVRegula) {
+      if (opVRegula == 0) {
+        costolicVRegula = opVRegula * 0
+        document.getElementById("precioVRegula").innerHTML = "$0 MXN";
+      }
+
+      else if (opVRegula >= 1 && opVRegula <= 5) {
+        costolicVRegula = opVRegula * 250
+        document.getElementById("precioVRegula").innerHTML = "$250 MXN";
+      }
+
+      else if (opVRegula >= 6 && opVRegula <= 10) {
+        costolicVRegula = opVRegula * 245
+        document.getElementById("precioVRegula").innerHTML = "$245 MXN";
+      }
+
+      else if (opVRegula >= 11 && opVRegula <= 20) {
+        costolicVRegula = opVRegula * 240
+        document.getElementById("precioVRegula").innerHTML = "$240 MXN";
+      }
+
+      else if (opVRegula >= 21 && opVRegula <= 40) {
+        costolicVRegula = opVRegula * 235
+        document.getElementById("precioVRegula").innerHTML = "$235 MXN";
+      }
+
+      else if (opVRegula >= 41 && opVRegula <= 80) {
+        costolicVRegula = opVRegula * 230
+        document.getElementById("precioVRegula").innerHTML = "$230 MXN";
+      }
+
+      else if (opVRegula >= 81 && opVRegula <= 150) {
+        costolicVRegula = opVRegula * 225
+        document.getElementById("precioVRegula").innerHTML = "$225 MXN";
+      }
+
+      else if (opVRegula >= 151 && opVRegula <= 300) {
+        costolicVRegula = opVRegula * 220
+        document.getElementById("precioVRegula").innerHTML = "$220 MXN";
+      }
+
+      else if (opVRegula > 300) {
+        costolicVRegula = opVRegula * 215
+        document.getElementById("precioVRegula").innerHTML = "$215 MXN";
+      }
+
+      return costolicVRegula;
+    }
+
+    function calcular_licCxC(opCxC) {
+      if (opCxC == 0) {
+        costoliclicCxC = opCxC * 0
+        document.getElementById("precioCxC").innerHTML = "$0 MXN";
+      }
+
+      else if (opCxC >= 1 && opCxC <= 5) {
+        costoliclicCxC = opCxC * 250
+        document.getElementById("precioCxC").innerHTML = "$250 MXN";
+      }
+
+      else if (opCxC >= 6 && opCxC <= 10) {
+        costoliclicCxC = opCxC * 245
+        document.getElementById("precioCxC").innerHTML = "$245 MXN";
+      }
+
+      else if (opCxC >= 11 && opCxC <= 20) {
+        costoliclicCxC = opCxC * 240
+        document.getElementById("precioCxC").innerHTML = "$240 MXN";
+      }
+
+      else if (opCxC >= 21 && opCxC <= 40) {
+        costoliclicCxC = opCxC * 235
+        document.getElementById("precioCxC").innerHTML = "$235 MXN";
+      }
+
+      else if (opCxC >= 41 && opCxC <= 80) {
+        costoliclicCxC = opCxC * 230
+        document.getElementById("precioCxC").innerHTML = "$230 MXN";
+      }
+
+      else if (opCxC >= 81 && opCxC <= 150) {
+        costoliclicCxC = opCxC * 225
+        document.getElementById("precioCxC").innerHTML = "$225 MXN";
+      }
+
+      else if (opCxC >= 151 && opCxC <= 300) {
+        costoliclicCxC = opCxC * 220
+        document.getElementById("precioCxC").innerHTML = "$220 MXN";
+      }
+
+      else if (opCxC > 300) {
+        costoliclicCxC = opCxC * 215
+        document.getElementById("precioCxC").innerHTML = "$215 MXN";
+      }
+
+      return costoliclicCxC;
+    }
+
+    function calcular_licCxP(opCxP) {
+      if (opCxP == 0) {
+        costolicCxP = opCxP * 0
+        document.getElementById("precioCxP").innerHTML = "$00  MXN";
+      }
+
+      else if (opCxP >= 1 && opCxP <= 5) {
+        costolicCxP = opCxP * 250
+        document.getElementById("precioCxP").innerHTML = "$250  MXN";
+      }
+
+      else if (opCxP >= 6 && opCxP <= 10) {
+        costolicCxP = opCxP * 245
+        document.getElementById("precioCxP").innerHTML = "$245  MXN";
+      }
+
+      else if (opCxP >= 11 && opCxP <= 20) {
+        costolicCxP = opCxP * 240
+        document.getElementById("precioCxP").innerHTML = "$240  MXN";
+      }
+
+      else if (opCxP >= 21 && opCxP <= 40) {
+        costolicCxP = opCxP * 235
+        document.getElementById("precioCxP").innerHTML = "$235  MXN";
+      }
+
+      else if (opCxP >= 41 && opCxP <= 80) {
+        costolicCxP = opCxP * 230
+        document.getElementById("precioCxP").innerHTML = "$230  MXN";
+      }
+
+      else if (opCxP >= 81 && opCxP <= 150) {
+        costolicCxP = opCxP * 225
+        document.getElementById("precioCxP").innerHTML = "$225  MXN";
+      }
+
+      else if (opCxP >= 151 && opCxP <= 300) {
+        costolicCxP = opCxP * 220
+        document.getElementById("precioCxP").innerHTML = "$220  MXN";
+      }
+
+      else if (opCxP > 300) {
+        costolicCxP = opCxP * 215
+        document.getElementById("precioCxP").innerHTML = "$215  MXN";
+      }
+
+
+      return costolicCxP;
+    }
+
+   
+    //------------------------------------------------------- termina bloque de calculo para licencias de control interno
+
+    function calcular_licCUxTimbre(opCUxTimbre) { 
+
+      if (opCUxTimbre == 0) {
+        costolicCUxTimbre = opCUxTimbre * 0
+        document.getElementById("precioCUxTimbre").innerHTML = "$0 MXN";
+      }
+      else if (opCUxTimbre >=1 && opCUxTimbre <= 49 ){
+        alert("La cantidad minima de timbres es de 50")
+      }
+
+      else if (opCUxTimbre >= 50) {
+        costolicCUxTimbre = opCUxTimbre * 2.5
+        document.getElementById("precioCUxTimbre").innerHTML = "$2.50 MXN";
+      }
+
+   
+      return costolicCUxTimbre;
+    }
+   
+    function calcular_licCUCertificado(opCUCertificado) { 
+      if (opCUCertificado == 0) {
+        costolicCUCertificado = opCUCertificado * 0
+        document.getElementById("precioCUCertificado").innerHTML = "$0 MXN";
+      }
+      if (opCUCertificado >=1 && opCUCertificado <= 9) {
+        alert("La cantidad minima de certificados es 10");
+      }
+
+      else if (opCUCertificado >= 10 && opCUCertificado <= 199) {
+        costolicCUCertificado = opCUCertificado * 30
+        document.getElementById("precioCUCertificado").innerHTML = "$30 MXN";
+      }
+      else if (opCUCertificado >= 200 && opCUCertificado <= 299) {
+        costolicCUCertificado = opCUCertificado * 29.5
+        document.getElementById("precioCUCertificado").innerHTML = "$29.5 MXN";
+      }
+      else if (opCUCertificado >= 300 && opCUCertificado <= 399) {
+        costolicCUCertificado = opCUCertificado * 29
+        document.getElementById("precioCUCertificado").innerHTML = "$29 MXN";
+      }
+      else if (opCUCertificado >= 400 && opCUCertificado <= 499) {
+        costolicCUCertificado = opCUCertificado * 28.5
+        document.getElementById("precioCUCertificado").innerHTML = "$28.5 MXN";
+      }
+      else if (opCUCertificado >= 500 && opCUCertificado <= 599) {
+        costolicCUCertificado = opCUCertificado * 28
+        document.getElementById("precioCUCertificado").innerHTML = "$28 MXN";
+      }
+      else if (opCUCertificado >= 600 && opCUCertificado <= 699) {
+        costolicCUCertificado = opCUCertificado * 27.5
+        document.getElementById("precioCUCertificado").innerHTML = "$27.5 MXN";
+      }
+      else if (opCUCertificado >= 700 && opCUCertificado <= 799) {
+        costolicCUCertificado = opCUCertificado * 27
+        document.getElementById("precioCUCertificado").innerHTML = "$27 MXN";
+      }
+      else if (opCUCertificado >= 800 && opCUCertificado <= 1099) {
+        costolicCUCertificado = opCUCertificado * 25.5
+        document.getElementById("precioCUCertificado").innerHTML = "$25.5 MXN";
+      }
+      else if (opCUCertificado >= 1100 && opCUCertificado <= 1199) {
+        costolicCUCertificado = opCUCertificado * 25
+        document.getElementById("precioCUCertificado").innerHTML = "$25 MXN";
+      }
+
+      else if (opCUCertificado >= 1200 && opCUCertificado <= 2400) {
+        costolicCUCertificado = opCUCertificado * (24.5)
+        document.getElementById("precioCUCertificado").innerHTML = "$24.5 MXN";
+      }
+
+      else if (opCUCertificado >= 2401 && opCUCertificado <= 3600) {
+        costolicCUCertificado = opCUCertificado * (24)
+        document.getElementById("precioCUCertificado").innerHTML = "$24 MXN";
+      }
+
+      else if (opCUCertificado >= 3601 && opCUCertificado <= 4800) {
+        costolicCUCertificado = opCUCertificado * (23.5)
+        document.getElementById("precioCUCertificado").innerHTML = "$23.5 MXN";
+      }
+
+      else if (opCUCertificado >= 4801 && opCUCertificado <= 6000) {
+        costolicCUCertificado = opCUCertificado * (23)
+        document.getElementById("precioCUCertificado").innerHTML = "$23 MXN";
+      }
+
+      else if (opCUCertificado >= 6001 && opCUCertificado <= 7200) {
+        costolicCUCertificado = opCUCertificado * (22.5)
+        document.getElementById("precioCUCertificado").innerHTML = "22.5 MXN";
+      }
+
+      else if (opCUCertificado >= 7201 && opCUCertificado <= 8400) {
+        costolicCUCertificado = opCUCertificado * (22)
+        document.getElementById("precioCUCertificado").innerHTML = "$22 MXN";
+      }
+      else if (opCUCertificado >= 8401 && opCUCertificado <= 9600 || opCUCertificado > 9601) {
+        costolicCUCertificado = opCUCertificado * (21.5)
+        document.getElementById("precioCUCertificado").innerHTML = "$21.5 MXN";
+      }
+     
+      return costolicCUCertificado;
+    }
+    
+    function calcular_licCAAlmacenamiento(opCAAlmacenamiento) { 
+      if (opCAAlmacenamiento == 0) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * 0
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$0 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 1 && opCAAlmacenamiento <= 100) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * 165
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$165 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 201 && opCAAlmacenamiento <= 300) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (330)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$330 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 301 && opCAAlmacenamiento <= 400) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (660)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$660 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 401 && opCAAlmacenamiento <= 500) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (825)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$825 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 501 && opCAAlmacenamiento <= 600) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (990)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$990 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 601 && opCAAlmacenamiento <= 700) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (1115)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "1115 MXN";
+      }
+
+      else if (opCAAlmacenamiento >= 701 && opCAAlmacenamiento <= 800 || opCAAlmacenamiento > 801) {
+        costolicCAAlmacenamiento = opCAAlmacenamiento * (1155)
+        document.getElementById("precioCAAlmacenamiento").innerHTML = "$1155 MXN";
+      }
+
+         return costolicCAAlmacenamiento;
+    }
+//  ----------------------------------------------------------inicia bloque de calculo para licencia de otros
+
+
+//  ----------------------------------------------------------termina bloque de calculo para licencia de otros
+
+//info de alerts por producto
+    function mostrar() {
+      //------------------------------------------------------------ inicia grupo de funciones para Productividad
+
+     
+// -------------------------------------------------------------------------human
+var vh = document.getElementById("opHuman").value;
+
+  if(vh == ''){
+       
+       opHuman = 0; 
+       }
+       else{
+        opHuman = parseInt(document.getElementById("opHuman").value);
+       }   
+     
+      var h = calcular_licHuman(opHuman);
+      document.getElementById("resulHuman").innerHTML = h;
+//--------------------------------------------------------------------------- Nom
+      var vn = document.getElementById("opNom").value;
+      if(vn == ''){
+        opNom = 0;
+      }
+      else{
+        opNom = parseInt(document.getElementById("opNom").value);
+      }
+
+      var n = calcular_licNom(opNom);
+      document.getElementById("resulNom").innerHTML = n;
+//-------------------------------------------------------------------------------Project
+      var vp = document.getElementById("opProjects").value;
+      if(vp == ''){
+        opProjects = 0;
+      }
+      else{
+       opProjects = parseInt(document.getElementById("opProjects").value);
+      }
+      var p = calcular_licProjects(opProjects);
+      document.getElementById("resulProjects").innerHTML = p;      
+//-------------------------------------------------------------------------------Finance
+      var vf = document.getElementById("opFinance").value;
+      if(vf == ''){
+        opFinance = 0;
+      }
+      else{
+        opFinance = parseInt(document.getElementById("opFinance").value);
+      }
+      
+      var f = calcular_licFinance(opFinance);
+      document.getElementById("resulFinance").innerHTML = f;
+//-------------------------------------------------------------------------------Services
+      var vs = document.getElementById("opServices").value;
+      if(vs == ''){
+        opServices = 0;
+      }
+      else{
+        opServices = parseInt(document.getElementById("opServices").value);
+      }
+      
+      var s = calcular_licServices(opServices);
+      document.getElementById("resulServices").innerHTML = s;
+//-----------------------------------------------------------------------------------Documents
+      var vd = document.getElementById("opDocuments").value;
+      if(vd == ''){
+        opDocuments = 0;
+      }
+      else{
+        opDocuments = parseInt(document.getElementById("opDocuments").value);
+      }       
+      var d = calcular_licDocuments(opDocuments);
+      document.getElementById("resulDocuments").innerHTML = d;
+//------------------------------------------------------------------------------------Measure
+      var vm = document.getElementById("opMeasure").value;
+      if(vm==''){
+        opMeasure = 0;
+      }
+      else{
+        opMeasure = parseInt(document.getElementById("opMeasure").value);
+      }      
+      var m = calcular_licMeasure(opMeasure);
+      document.getElementById("resulMeasure").innerHTML = m;
+      
+
+
+      subtotalLicenciasProductividad = (opHuman + opNom +opProjects + opFinance + opServices + opDocuments + opMeasure);
+      subtotalProductividad = (h + n + p + f + s + d + m);
+      //suma caja parcial de tabla productividad
+      document.getElementById("totalLicencias").innerHTML = subtotalLicenciasProductividad;   
+      document.getElementById("totalPrecio").innerHTML = subtotalProductividad;
+   
+
+      //------------------------------------------------------------ termina grupo de funciones para Productividad
+
+      //------------------------------------------------------------------------ inicia grupo de funciones para Control interno
+      
+      //--------------------------------------------------------------------------Taxes
+      var vtaxes = document.getElementById("opTaxes").value;
+      if(vtaxes == ''){
+        opTaxes = 0;
+      }
+      else{
+        opTaxes= parseInt(document.getElementById("opTaxes").value);
+      }      
+      var vT = calcular_licTaxesControl(opTaxes);
+      document.getElementById("resulTaxes").innerHTML = vT; 
+      //--------------------------------------------------------------------------XML
+      vxml = document.getElementById("opXML").value;
+      if (vxml == ''){
+        opXML = 0;
+      }
+      else{
+        opXML = parseInt(document.getElementById("opXML").value);
+      }      
+      var vX = calcular_licXML(opXML);
+      document.getElementById("resulXML").innerHTML = vX;
+//---------------------------------------------------------------------------------Regula
+      vv = document.getElementById("opVRegula").value
+      if (vv == ''){
+        opVRegula = 0;
+      }
+      else{
+        opVRegula = parseInt(document.getElementById("opVRegula").value);
+      }      
+      var vVr = calcular_licVRegula(opVRegula);
+      document.getElementById("resulVRegula").innerHTML = vVr;
+//------------------------------------------------------------------------------------CxC
+      vcxc = document.getElementById("opCxC").value;
+      if(vcxc == ''){
+        opCxC = 0;
+      }
+      else{
+        opCxC= parseInt(document.getElementById("opCxC").value);
+      }      
+      var vcx = calcular_licCxC(opCxC);
+      document.getElementById("resulCxC").innerHTML = vcx;
+//--------------------------------------------------------------------------------cxp
+      var cxp = document.getElementById("opCxP").value;
+      if(cxp == ''){
+        opCxP = 0;
+      }
+      else{
+        opCxP = parseInt(document.getElementById("opCxP").value);
+      }      
+      var vcxp = calcular_licCxP(opCxP);
+      document.getElementById("resulCxP").innerHTML = vcxp;   
+
+
+      subtotalLicenciasControlInterno = (opTaxes + opXML + opVRegula + opCxC + opCxP);
+      subtotalControlInterno = (vT + vX + vVr + vcx + vcxp);
+
+       //suma caja parcial de tabla control interno
+       document.getElementById("totalLicenciasControlInterno").innerHTML = subtotalLicenciasControlInterno;   
+      document.getElementById("totalPrecioControlInterno").innerHTML = subtotalControlInterno;
+
+    
+      
+      //------------------------------------------------------------------------termina grupo de funciones para Control interno
+      
+      //------------------------------------------------------------------------inicia grupo de funciones para otros
+      
+//----------------------------------------------------------------------------------Timbres
+      var vtimbre = document.getElementById("opCUxTimbre").value;
+      if(vtimbre == ''){
+        opCUxTimbre = 0;
+      }
+      else{
+        opCUxTimbre= parseInt(document.getElementById("opCUxTimbre").value);
+      }      
+      var CUxT = calcular_licCUxTimbre(opCUxTimbre); 
+      document.getElementById("resulCUxTimbre").innerHTML = CUxT; 
+//-------------------------------------------------------------------------------Certificados
+      var vcertificado = document.getElementById("opCUCertificado").value;
+      if (vcertificado == ''){
+        opCUCertificado = 0;
+      }
+      else{
+        opCUCertificado= parseInt(document.getElementById("opCUCertificado").value);
+      }      
+      var CUCert = calcular_licCUCertificado(opCUCertificado); 
+      document.getElementById("resulCUCertificado").innerHTML = CUCert; 
+ //-----------------------------------------------------------------------------------Almacenamiento
+      var valmacena =  document.getElementById("opCAAlmacenamiento").value;
+      if (valmacena==''){
+        opCAAlmacenamiento = 0;
+      }
+      else{
+        opCAAlmacenamiento= parseInt(document.getElementById("opCAAlmacenamiento").value);
+      }
+      var CAAl = calcular_licCAAlmacenamiento(opCAAlmacenamiento); 
+      document.getElementById("resulCAAlmacenamiento").innerHTML = CAAl; 
+
+
+      subtotalLicenciasOtros = (opCUxTimbre + opCUCertificado + opCAAlmacenamiento );
+      subtotalOtros = (CUxT + CUCert + CAAl);
+      //suma caja parcial de tabla control interno
+      document.getElementById("totalLicenciasOtros").innerHTML = subtotalLicenciasOtros;   
+      document.getElementById("totalPrecioOtros").innerHTML = subtotalOtros;
+      //------------------------------------------------------------------------termina grupo de funciones para otros
+
+        
+
+     
+
+      //suma caja parcial de tabla productividad caja flotane
+
+    
+      //subtotal Productividad
+      document.getElementById("cantidadLicenciasProductividad").innerHTML = subtotalLicenciasProductividad;  
+      document.getElementById("resulProductividad").innerHTML = subtotalProductividad;
+      //subtotal Control interno
+      document.getElementById("cantidadLicenciasControl").innerHTML = subtotalLicenciasControlInterno;  
+      document.getElementById("resulControl").innerHTML = subtotalControlInterno;
+      //subtotal Otros
+      document.getElementById("cantidadLicenciasOtros").innerHTML = subtotalLicenciasOtros;  
+      document.getElementById("resulOtros").innerHTML = subtotalOtros;
+
+
+      // suma general
+      document.getElementById("TotalLicenciasGeneral").innerHTML = subtotalLicenciasProductividad+subtotalLicenciasControlInterno+subtotalLicenciasOtros;  
+      document.getElementById("sumaTotal").innerHTML = (subtotalProductividad + subtotalControlInterno + subtotalOtros);
+
+        
+
+    }
+    
+    function infohuman(){
+    
+        alert("Costo de certificado digital para firmar contratos laborales con firma autógrafa o con la eFirma del SAT y en cumplimientocon la NOM-151. Incluye firma autógrafa gratuita, sin certificado para procesos internos de firma electrónica con almacenamiento automático en el expediente digital del empleado.")
+         }
+    function infofinance(){
+        alert("El costo de cada timbre para emitir para emitir facturas, notas de crédito o complementos de pago es de $2.50 MNX")
+          }  
+    function infodocuments(){
+      alert("Costo de certificado digital para firmar contratos, propuestas de negocio, con firma autógrafa o con la eFirma del SAT y en cumplimiento con la NOM-151, este costo varia en función de la cantidad a comprar , como se muestra en la página 5 y 6. Incluye firma autógrafa gratuita, sin certificado para procesos internos de firma electrónica como políticas, minutas, cartas, memorándums, listas de asistencia, por mencionar algunos, también se incluyen plantillas de varios tipos de contratos sin costo.")     
+          }
+    function infotaxescontrol(){
+      alert("Si usted necesita que nosotros descarguemos su información, el costo de la descarga se cotiza en función al tiempo invertido., el cual cotizaremos por separado. No incluye servicios de consultoría para el cálculo de los impuestos o atención de requerimientos por parte de la autoridad fiscal. (6) Una unidad de almacenamiento de 100 MB permite almacenar 2,000 CFDI`S en BrumBeeTaxes& Control.")    
+          }
+    function infotaxes(){
+      alert("Módulo para identificar el IVA efectivamente cobrado o pagado, para las declaraciones de IVA, y también para identificar las retenciones e ISR, con base en su información contenida en sus CFDIS.")
+            }
+    function infoxml(){
+      alert("Módulo para descargar del Sistema de Administración Tributario SAT, los CFDISemitidos y recibidos, así como la metadata.")
+          }
+    function infovregula(){
+      alert("Módulo para validar operaciones realizadas con proveedores que se encuentran en la lista negra del SAT (Anexo 69 y 69B)")
+        }
+    function infocxc(){
+        alert("Las cuentas por cobrar se basan en la ausencia de REPS, para determinar un cobro pendiente y saber que si no se cuenta con este CFDI no se podrá hacer deducible el gasto para su cliente.")
+      }
+    function infocxp(){
+      alert("Las cuentas por pagar se basan en la ausencia de REPS, para determinar un pago pendiente aún y cuando ya se haya pagado, lo que significa que el proveedor no ha generado este CFDI y no podrá deducir el gasto.")
+    }
+    function infocertifirma(){
+      alert("Usuario adicional $1200.00 anual")
+    }
+    function infomasivo(){
+      alert("Todos los planes masivos cuentan con un número de usuarios ilimitados.")
+    }
+  </script>
+  
+</body>
+
+</html>
